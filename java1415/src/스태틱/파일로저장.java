@@ -1,0 +1,30 @@
+package 스태틱;
+
+import java.io.FileWriter;
+import java.util.ArrayList;
+
+public class 파일로저장 {
+
+	public void save(ArrayList<Day> list) {
+		// 외부에서 데이터를 받아서 파일로 저장.
+		System.out.println(list.size() + "일치가 넘어옴.");
+		for (int i = 0; i < list.size(); i++) {
+			Day day = list.get(i);
+			System.out.println("전달된 일과: " + day);
+			System.out.println("----------------------");
+			// 파일로 저장할 예정 --> 예외처리
+			try {
+				// 파일을 만들어서 저장하는 부품을 써야함.
+				FileWriter w = new FileWriter(i + ".txt");
+				// string을 괄호 안에 만들어줘야 함.
+				w.write(day.doing + "\n");
+				w.write(day.time + "\n");
+				w.write(day.location + "\n");
+				w.close(); // 파일에다가 다 썻음.
+			} catch (Exception e) {
+				// try내에 있는 코드에서 에러가 발새했을 때, 다음 처리 내용을 써줌.
+				System.out.println("파일로 저장하다가 에러가 발생함.");
+			}
+		} // for
+	} // save
+} // class
