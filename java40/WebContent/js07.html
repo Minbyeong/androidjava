@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function idDoubleCheck() {
+		id2Value = document.getElementById('id2').value
+		
+		if (id2Value.length == 0) {
+			alert('입력되지 않은 값이 있습니다. 확인하여 입력해주세요')
+		} else {
+			location.href = 'equal.jsp?id=' + id2Value
+		}
+	}
+	
+	function login() {
+		id2Value = document.getElementById('id2').value
+		pw1Value = document.getElementById('pw1').value
+		pw2Value = document.getElementById('pw2').value
+
+		if (id2Value.length == 0 || pw1Value.length == 0) {
+			alert('입력되지 않은 값이 있습니다. 확인하여 입력해주세요')
+		} else {
+			location.href = 'login.jsp?id=' + id2Value +'&pw=' +pw1Value
+		}
+		
+		if (pw1Value == pw2Value) {
+			location.href = 'login.jsp?id=' + idValue + '&pw=' + pw1Value
+		} else {
+			//alert('패스워드가 다름. 다시 입력해주세요')
+			document.getElementById('result').innerHTML = '패스워드가 다릅니다.'
+		}
+	}
+	
+	function checkId() {
+		id2Value = document.getElementById('id2').value
+
+		if (id2Value.length == 0) {
+			alert('아이디가 입력되지 않았습니다. 확인하여 입력해주세요.')
+		} else {
+			alert('아이디가 입력되어 있습니다.')
+		}
+	}
+
+	function checkIdFive() {
+		id2Value = document.getElementById('id2').value
+
+		if (id2Value.length < 5) {
+			alert('아이디의 글자가 5개 미만 입니다. 5개 이상 입력하세요.')
+		} else {
+			alert('정상적인 입력입니다.')
+		}
+	}
+</script>
+<style type="text/css">
+h1 {
+	text-align: center;
+	color: green;
+}
+</style>
+</head>
+<body>
+	<h1>로그인 화면</h1>
+	<hr color="green">
+		<p>아이디</p>
+		<p>
+			<input type="text" id="id2" name="id">
+			<button onclick="idDoubleCheck()">아이디중복확인</button>
+		</p>
+		<p>패스워드</p>
+		<p>
+			<input type="text" id="pw1" name="pw1">
+		</p>
+		<p>패스워드 재확인</p>
+		<p>
+			<input type="text" id="pw1" name="pw1">
+		</p>
+		<p>
+			<button onclick="login()">로그인</button>
+		</p>
+	<hr color="green">
+	<p>
+		<button onclick="checkId()">아이디입력확인</button>
+		<button onclick="checkIdFive()">아이디5글자확인</button>
+	</p>
+</body>
+</html>
