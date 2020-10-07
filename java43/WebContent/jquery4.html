@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#b1').click(function() {
+				$.ajax({ /* 비동기통신 */
+					url: "call2.jsp",
+					data: {
+						grade: $('#grade').val()
+					},
+					success: function(result) {
+						/* alert("성공!!!!") */
+						console.log("받은 데이터: " + result)
+						if (result == '보통') {
+							alert('재시험.')
+							/* location.href="http://www.naver.com" */
+						} else {
+							alert('통과.')
+						}
+					}
+				})
+			})
+		})
+	</script>
+</head>
+<body>
+<p>나이 <input id="grade" type="text"> </p>
+<button id="b1">성적을 판별해보자.</button>
+</body>
+</html>
